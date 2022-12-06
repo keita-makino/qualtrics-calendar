@@ -2,8 +2,13 @@ import { Calendar } from './Calendar';
 import styled from '@emotion/styled';
 import React from 'react';
 import { Grid, Typography, Box } from '@mui/material';
+import { PickerType } from '../types';
 
-export type InputRowProps = { label: string; index: number };
+export type InputRowProps = {
+  label: string;
+  index: number;
+  pickerType: PickerType;
+};
 
 const StyledGrid = styled(Grid)({
   padding: '0.5rem',
@@ -27,7 +32,7 @@ export const InputRow: React.FC<InputRowProps> = (props: InputRowProps) => {
     >
       <Typography>{props.label}</Typography>
       <Box flexGrow={1}>
-        <Calendar index={props.index} />
+        <Calendar index={props.index} pickerType={props.pickerType} />
       </Box>
     </StyledGrid>
   );

@@ -4,8 +4,9 @@ import { Container } from './components';
 import { Provider } from './store';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
+import { PickerType } from './types';
 
-const calendarRender = (target: HTMLElement) => {
+const calendarRender = (target: HTMLElement, type: PickerType) => {
   const container = document.createElement('div');
   container.setAttribute('id', `MapContainer${target.id}`);
 
@@ -20,7 +21,7 @@ const calendarRender = (target: HTMLElement) => {
   root.render(
     <LocalizationProvider dateAdapter={AdapterMoment}>
       <Provider>
-        <Container directionContainer={directionContainer} />
+        <Container directionContainer={directionContainer} pickerType={type} />
       </Provider>
     </LocalizationProvider>
   );

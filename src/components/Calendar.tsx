@@ -1,10 +1,12 @@
 import { Grid, TextField } from '@mui/material';
-import { DatePicker, DateTimePicker } from '@mui/x-date-pickers';
+import { DatePicker, TimePicker, DateTimePicker } from '@mui/x-date-pickers';
 import React, { useEffect, useState } from 'react';
 import { useTrackedState, useUpdate } from '../store';
+import { PickerType } from '../types';
 
 type CalendarProps = {
   index: number;
+  pickerType: PickerType;
 };
 
 export const Calendar: React.FC<CalendarProps> = (props: CalendarProps) => {
@@ -33,12 +35,28 @@ export const Calendar: React.FC<CalendarProps> = (props: CalendarProps) => {
 
   return (
     <Grid item container xl={12} lg={12} md={12} sm={12} xs={12}>
-      <DateTimePicker
-        label={`Type or select for ${state.inputs[props.index].label}`}
-        value={moment}
-        onChange={(newMoment) => handleChange(newMoment)}
-        renderInput={(params) => <TextField {...params} />}
-      />
+      {props.pickerType === 'date' ? (
+        <DatePicker
+          label={`Type or select the date`}
+          value={moment}
+          onChange={(newMoment) => handleChange(newMoment)}
+          renderInput={(params) => <TextField {...params} />}
+        />
+      ) : props.pickerType === 'time' ? (
+        <TimePicker
+          label={`Type or select the date`}
+          value={moment}
+          onChange={(newMoment) => handleChange(newMoment)}
+          renderInput={(params) => <TextField {...params} />}
+        />
+      ) : (
+        <DateTimePicker
+          label={`Type or select the date and time`}
+          value={moment}
+          onChange={(newMoment) => handleChange(newMoment)}
+          renderInput={(params) => <TextField {...params} />}
+        />
+      )}
     </Grid>
   );
 };

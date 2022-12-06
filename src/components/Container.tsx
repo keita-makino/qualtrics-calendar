@@ -3,9 +3,11 @@ import { ClearButton } from './ClearButton';
 import { useUpdate } from '../store';
 import { InputForm } from './InputForm';
 import { Grid } from '@mui/material';
+import { PickerType } from '../types';
 
 type Props = {
   directionContainer: HTMLElement;
+  pickerType: PickerType;
 };
 
 export const Container: React.FC<Props> = (props) => {
@@ -32,7 +34,7 @@ export const Container: React.FC<Props> = (props) => {
 
   return (
     <Grid container>
-      <InputForm />
+      <InputForm pickerType={props.pickerType} />
       <ClearButton />
     </Grid>
   );
