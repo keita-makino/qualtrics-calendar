@@ -15,13 +15,13 @@ export const Calendar: React.FC<CalendarProps> = (props: CalendarProps) => {
   const [moment, setMoment] = useState<Date | null>(null);
 
   const handleChange = (newMoment: any) => {
-    setMoment(new Date(newMoment._d));
+    setMoment(newMoment ? new Date(newMoment._d) : null);
     update({
       type: 'EDIT_INPUT',
       input: {
         ...state.inputs[props.index],
         moment: newMoment,
-        value: newMoment._d,
+        value: newMoment ? newMoment._d.toString() : undefined,
       },
       index: props.index,
     });
