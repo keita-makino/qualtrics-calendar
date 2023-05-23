@@ -1,8 +1,9 @@
-import { Grid, TextField } from '@mui/material';
+import { Grid, TextField, ThemeProvider } from '@mui/material';
 import { DatePicker, TimePicker, DateTimePicker } from '@mui/x-date-pickers';
 import React, { useEffect, useState } from 'react';
 import { useTrackedState, useUpdate } from '../store';
 import { PickerType } from '../types';
+import { theme } from '../themes';
 
 type CalendarProps = {
   index: number;
@@ -34,29 +35,31 @@ export const Calendar: React.FC<CalendarProps> = (props: CalendarProps) => {
   }, [state.inputs[props.index].moment]);
 
   return (
-    <Grid item container xl={12} lg={12} md={12} sm={12} xs={12}>
-      {props.pickerType === 'date' ? (
-        <DatePicker
-          label={`Type or select the date`}
-          value={moment}
-          onChange={(newMoment) => handleChange(newMoment)}
-          renderInput={(params) => <TextField {...params} />}
-        />
-      ) : props.pickerType === 'time' ? (
-        <TimePicker
-          label={`Type or select the date`}
-          value={moment}
-          onChange={(newMoment) => handleChange(newMoment)}
-          renderInput={(params) => <TextField {...params} />}
-        />
-      ) : (
-        <DateTimePicker
-          label={`Type or select the date and time`}
-          value={moment}
-          onChange={(newMoment) => handleChange(newMoment)}
-          renderInput={(params) => <TextField {...params} />}
-        />
-      )}
-    </Grid>
+    <ThemeProvider theme={theme}>
+      <Grid item container xl={12} lg={12} md={12} sm={12} xs={12}>
+        {props.pickerType === 'date' ? (
+          <DatePicker
+            label={`Type or select the date`}
+            value={moment}
+            onChange={(newMoment) => handleChange(newMoment)}
+            slotProps={{ textField: { variant: 'outlined' } }}
+          />
+        ) : props.pickerType === 'time' ? (
+          <TimePicker
+            label={`Type or select the date`}
+            value={moment}
+            onChange={(newMoment) => handleChange(newMoment)}
+            slotProps={{ textField: { variant: 'outlined' } }}
+          />
+        ) : (
+          <DateTimePicker
+            label={`Type or select the date and time`}
+            value={moment}
+            onChange={(newMoment) => handleChange(newMoment)}
+            slotProps={{ textField: { variant: 'outlined' } }}
+          />
+        )}
+      </Grid>
+    </ThemeProvider>
   );
 };
