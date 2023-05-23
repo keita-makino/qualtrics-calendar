@@ -33,7 +33,7 @@ A react-based component that displays a calendar component in [Qualtrics](https:
 1. Click the {A} button at the top-left and click "Survey Question".
 1. Search this question and click "Question Text".
 1. A code `${q://"Some ID"/QuestionText}` will be inserted so save the ID for later use.
-1. Edit the text fields on the rows/columns as you need.
+1. Edit the text fields on the rows as you need.
 1. Select the "JavaScript" option from the side menu or click </> icon next to the question text to enter the coding view.
 1. Copy and paste the code below. Please select one of the date, time, or datetime options.
 1. **All done!**
