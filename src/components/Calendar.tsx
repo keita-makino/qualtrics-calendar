@@ -53,7 +53,7 @@ export const Calendar: React.FC<CalendarProps> = (props: CalendarProps) => {
           />
         ) : (
           <DateTimePicker
-            label={`Type or select the date and time`}
+            label={`Type or select the datetime`}
             value={moment}
             onChange={(newMoment) => handleChange(newMoment)}
             slotProps={{ textField: { variant: 'outlined' } }}
